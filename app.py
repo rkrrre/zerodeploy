@@ -22,7 +22,7 @@ def download_files(URL):
 
 def write():
     st.title('Model for Image Classification')
-    if not os.path.isfile('export.pkl'):
+    if (not os.path.isfile('export.pkl') or os.path.getsize("export.pkl") < 15000):
         ph = st.empty()
         ph2 = st.empty()
         ph3 = st.empty()
