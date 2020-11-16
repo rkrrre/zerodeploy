@@ -1,11 +1,11 @@
-from fastai.vision import *
+from fastai.vision.all import *
 import streamlit as st
 import requests
 import os
 
 @st.cache(allow_output_mutation=True)
 def get_learner(file_name='export.pkl'):
-    learn = load_learner('.',file_name)
+    learn = load_learner(file_name)
     return learn
 
 
@@ -49,7 +49,7 @@ def write():
             if check:
                 file_name = 'export.pkl'
                 learn = get_learner(file_name)
-                img = open_image(img_data)
+                img = PILImage.create(img_data)
                 result = learn.predict(img)
                 st.write(result)
 
