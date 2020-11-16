@@ -14,13 +14,16 @@ def download_files(fileID):
     with open("export.pkl", "wb") as model:
         r = requests.get(URL)
         model.write(r.content)
+    try:
+        assert(os.path.getsize("export.pkl") > 15000)
         st.success('Model successfully downloaded!')
-    return 
+    except:
+        st.warning("THere is something wrong!")
 
 
 def write():
     st.title('Model for Image Classification')
-    if (not os.path.isfile('export.pkl')) or (os.path.getsize("export.pkl") < 15000):
+    if not os.path.isfile('export.pkl'):
         ph = st.empty()
         ph2 = st.empty()
         ph3 = st.empty()
@@ -36,7 +39,8 @@ def write():
                 st.button("Next Stage")
             except Exception as e:
                 st.error('Not a correct fileID!')
-                os.remove('export.pkl')
+                print(str(e))
+
     else:
         st.success("Model already downloaded")
 
