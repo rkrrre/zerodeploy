@@ -9,8 +9,7 @@ def get_learner(file_name='export.pkl'):
     return learn
 
 
-def download_files(fileID):
-    URL = f'https://drive.google.com/uc?export=download&id={fileID}'
+def download_files(URL):
     with open("export.pkl", "wb") as model:
         r = requests.get(URL)
         model.write(r.content)
@@ -28,17 +27,17 @@ def write():
         ph2 = st.empty()
         ph3 = st.empty()
         ph.warning('Please download the model file')
-        fileID = ph3.text_input('Please input the fileID','')
+        URL = ph3.text_input('Please input the URL','')
         if ph2.button('Download'):
             ph.empty()
             ph3.empty()
             ph2.text('Downloading...')
             try:
-                download_files(fileID)
+                download_files(URL)
                 ph2.text('Download completed')
                 st.button("Next Stage")
             except Exception as e:
-                st.error('Not a correct fileID!')
+                st.error('Not a correct URL!')
                 print(str(e))
 
     else:
