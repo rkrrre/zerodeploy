@@ -1,5 +1,5 @@
 streamlit==0.52.2
-fastai==2.1.5
+fastai==2.3.0
 IPython==5.5.0
 -f https://download.pytorch.org/whl/torch_stable.html
 torch==1.7.0+cpu 
