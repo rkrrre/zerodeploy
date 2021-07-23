@@ -23,7 +23,14 @@ def download_files(URL):
 
 
 def write():
-    st.title('Model for Image Classification')
+    pl = st.empty()
+    pl.markdown('''
+    <html>
+    <body style="background-color:#216D6D;">
+    <h1 align="center" style="color:white;">Image Classifier</h1>
+    </body>
+    </html>
+    ''',unsafe_allow_html=True)
     if (not os.path.isfile('export.pkl') or os.path.getsize("export.pkl") < 15000):
         ph = st.empty()
         ph2 = st.empty()
@@ -56,7 +63,9 @@ def write():
                 learn = get_learner(file_name)
                 img = PILImage.create(img_data)
                 result = learn.predict(img)
-                st.write(result)
+                pred,pred_idx,probs = result
+                st.write('Result: '+pred.capitalize())
+                st.write('Probablitiy: '+str(probs))
 
 
 if __name__ == "__main__":
