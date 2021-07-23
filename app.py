@@ -56,7 +56,7 @@ def write():
         if img_data == None:
                 st.warning('Checking data...')
         else:
-            st.image(img_data,width=3,use_column_width=True)
+            st.image(img_data,width=80,use_column_width=True)
             check = st.button('Predict')
             if check:
                 file_name = 'export.pkl'
