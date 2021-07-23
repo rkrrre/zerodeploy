@@ -64,8 +64,8 @@ def write():
                 img = PILImage.create(img_data)
                 result = learn.predict(img)
                 pred,pred_idx,probs = result
-                st.write('Result: '+pred.capitalize())
                 prob_value = f'{probs[pred_idx]:.04f}'
+                st.write('Result: '+pred.capitalize())
                 st.write('Probablitiy: '+prob_value)
 
 
