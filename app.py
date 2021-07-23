@@ -56,7 +56,7 @@ def write():
         if img_data == None:
                 st.warning('Checking data...')
         else:
-            st.image(img_data,use_column_width=True)
+            st.image(img_data,width=30,use_column_width=True)
             check = st.button('Predict')
             if check:
                 file_name = 'export.pkl'
@@ -65,7 +65,8 @@ def write():
                 result = learn.predict(img)
                 pred,pred_idx,probs = result
                 st.write('Result: '+pred.capitalize())
-                st.write('Probablitiy: '+str(probs))
+                prob_value = f'{probs[pred_idx]:.04f}'
+                st.write('Probablitiy: '+prob_value)
 
 
 if __name__ == "__main__":
