@@ -1,4 +1,6 @@
 from fastai.vision.all import *
+# from fastai.vision.core import PILImage
+# from fastai.learner import load_learner
 import streamlit as st
 import requests
 import os
@@ -17,7 +19,7 @@ def download_files(URL):
         assert(os.path.getsize("export.pkl") > 15000)
         st.success('Model successfully downloaded!')
     except:
-        st.warning("THere is something wrong!")
+        st.warning("There is something wrong!")
 
 
 def write():
@@ -59,3 +61,5 @@ def write():
 
 if __name__ == "__main__":
     write()
+
+    
