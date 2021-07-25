@@ -17,7 +17,7 @@ def download_files(URL):
         model.write(r.content)
     try:
         assert(os.path.getsize("export.pkl") > 15000)
-        st.success('Model successfully downloaded!')
+        st.success('Model is ready! Go ahead to the next stage')
     except:
         st.warning("There is something wrong!")
 
@@ -43,14 +43,14 @@ def write():
             ph2.info('Please wait a moment...')
             try:
                 download_files(URL)
-                ph2.text('Model is ready!')
+                # ph2.text('Model is ready!')
                 st.button("Next Stage")
             except Exception as e:
                 st.error('Not a correct URL!')
                 print(str(e))
 
     else:
-        st.success("Model already downloaded")
+        st.success("Model is ready")
 
         img_data = st.file_uploader('Please upload your image',type=['jpg','jpeg','png','gif'])
         if img_data == None:
