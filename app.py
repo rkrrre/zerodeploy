@@ -35,15 +35,15 @@ def write():
         ph = st.empty()
         ph2 = st.empty()
         ph3 = st.empty()
-        ph.warning('Please download the model file')
-        URL = ph3.text_input('Please input the URL','')
-        if ph2.button('Download'):
+        # ph.warning('Please download the model file')
+        URL = ph3.text_input('Please paste URL(direct download link) to your image classifier model','')
+        if ph2.button('Get your model'):
             ph.empty()
             ph3.empty()
-            ph2.text('Downloading...')
+            ph2.info('Please wait a moment...')
             try:
                 download_files(URL)
-                ph2.text('Download completed')
+                ph2.text('Model is ready!')
                 st.button("Next Stage")
             except Exception as e:
                 st.error('Not a correct URL!')
@@ -52,7 +52,7 @@ def write():
     else:
         st.success("Model already downloaded")
 
-        img_data = st.file_uploader('Please upload your image',type=['jpg','jpeg','png'])
+        img_data = st.file_uploader('Please upload your image',type=['jpg','jpeg','png','gif'])
         if img_data == None:
                 st.warning('Checking data...')
         else:
